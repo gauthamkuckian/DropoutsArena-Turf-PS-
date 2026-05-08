@@ -164,11 +164,11 @@ export default function App() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative h-[80vh] md:h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-[url('/images/hero.png')] bg-cover bg-center opacity-70 scale-105" />
           <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/20 via-neutral-950/40 to-neutral-950" />
           
-          <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-16 md:pt-0">
+          <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-10 md:pt-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -193,7 +193,7 @@ export default function App() {
           </div>
         </section>
 
-        <section id="turf" className="py-12 md:py-24 px-6 relative overflow-hidden">
+        <section id="turf" className="py-6 md:py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0 z-0">
              <img 
                 src="/images/arena.png"
@@ -276,14 +276,14 @@ export default function App() {
                 <div className="relative aspect-[4/3] md:aspect-[3/2] bg-emerald-950 rounded-2xl border border-emerald-800/50 overflow-hidden shadow-2xl">
                   {/* Soccer Field Diagram */}
                   <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/grass.png')]" />
-                  <div className="absolute inset-[5%] border-2 border-white/30" />
-                  <div className="absolute top-1/2 left-0 right-0 h-px bg-white/30" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-2 border-white/30 rounded-full" />
-                  <div className="absolute top-[30%] bottom-[30%] left-0 w-24 border-r-2 border-t-2 border-b-2 border-white/30" />
-                  <div className="absolute top-[30%] bottom-[30%] right-0 w-24 border-l-2 border-t-2 border-b-2 border-white/30" />
+                  <div className="absolute inset-[5%] border-2 border-white/10" />
+                  <div className="absolute top-1/2 left-0 right-0 h-px bg-white/10" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-2 border-white/10 rounded-full" />
+                  <div className="absolute top-[30%] bottom-[30%] left-0 w-24 border-r-2 border-t-2 border-b-2 border-white/10" />
+                  <div className="absolute top-[30%] bottom-[30%] right-0 w-24 border-l-2 border-t-2 border-b-2 border-white/10" />
                   
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center p-8 bg-neutral-950/80 backdrop-blur-md rounded-2xl border border-white/10 max-w-[80%]">
+                    <div className="text-center p-8 bg-black/10 backdrop-blur-[2px] rounded-2xl border border-white/0 max-w-[80%]">
                       <p className="text-emerald-400 font-black text-2xl md:text-3xl mb-2">PURE TURF EXPERIENCE</p>
                       <p className="text-neutral-400 text-sm md:text-base">Experience the crunch of FIFA certified grass under your boots.</p>
                     </div>
