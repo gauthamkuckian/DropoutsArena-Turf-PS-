@@ -48,14 +48,14 @@ const games = [
 ];
 
 const galleryItems = [
-  { type: 'video', src: '/images/gallery-1.mp4', title: 'Arena Logo Reveal' },
-  { type: 'image', src: '/images/gallery-2.png', title: 'Sunset Turf Session' },
-  { type: 'image', src: '/images/gallery-3.png', title: 'Pro Gaming Setup' },
-  { type: 'image', src: '/images/gallery-4.png', title: 'Match Results' },
-  { type: 'image', src: '/images/gallery-5.png', title: 'Corner Turf Shot' },
-  { type: 'image', src: 'https://images.unsplash.com/photo-1544919982-b61976f0ba43?q=80&w=1200', title: 'Champions Night' },
-  { type: 'image', src: 'https://images.unsplash.com/photo-1529900748604-07564a03f7a6?q=80&w=1200', title: 'Turf Action' },
-  { type: 'image', src: 'https://images.unsplash.com/photo-1540747913346-19e3adbc4ebb?q=80&w=1200', title: 'Vasai Arena' },
+  { type: 'video', src: '/images/gallery-1.mp4' },
+  { type: 'image', src: '/images/gallery-2.png' },
+  { type: 'image', src: '/images/gallery-3.png' },
+  { type: 'image', src: '/images/gallery-4.png' },
+  { type: 'image', src: '/images/gallery-5.png' },
+  { type: 'image', src: 'https://images.unsplash.com/photo-1544919982-b61976f0ba43?q=80&w=1200' },
+  { type: 'image', src: 'https://images.unsplash.com/photo-1529900748604-07564a03f7a6?q=80&w=1200' },
+  { type: 'image', src: 'https://images.unsplash.com/photo-1540747913346-19e3adbc4ebb?q=80&w=1200' },
 ];
 
 export default function App() {
@@ -376,12 +376,10 @@ export default function App() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {galleryItems.slice(0, 4).map((item, i) => (
                 <div key={i} className="aspect-[4/5] bg-neutral-800 rounded-3xl overflow-hidden group relative cursor-pointer" onClick={() => setShowFullGallery(true)}>
-                   <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
-                      <p className="text-white font-bold opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 transition-transform">{item.title}</p>
-                   </div>
+                   <div className="absolute inset-0 z-10 bg-black/20 group-hover:bg-black/0 transition-colors" />
                    <img 
                     src={item.src}
-                    alt={item.title}
+                    alt="Gallery item"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                    />
@@ -441,11 +439,10 @@ export default function App() {
                           referrerPolicy="no-referrer"
                         />
                       )}
-                      <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span className="text-sm font-bold bg-emerald-500 text-black px-2 py-1 rounded-md mb-2 inline-block">
-                          {item.type.toUpperCase()}
+                      <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-xs font-bold bg-emerald-500 text-black px-2 py-1 rounded-md inline-block uppercase tracking-tighter">
+                          {item.type}
                         </span>
-                        <h4 className="text-xl font-black italic">{item.title}</h4>
                       </div>
                     </motion.div>
                   ))}
