@@ -374,14 +374,39 @@ export default function App() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {galleryItems.slice(0, 4).map((item, i) => (
-                <div key={i} className="aspect-[4/5] bg-neutral-800 rounded-3xl overflow-hidden group relative cursor-pointer" onClick={() => setShowFullGallery(true)}>
+                <div 
+                  key={i} 
+                  className="aspect-[4/5] bg-neutral-800 rounded-3xl overflow-hidden group relative cursor-pointer" 
+                  onClick={() => setShowFullGallery(true)}
+                  onMouseEnter={(e) => {
+                    const video = e.currentTarget.querySelector('video');
+                    if (video) video.play().catch(() => {});
+                  }}
+                  onMouseLeave={(e) => {
+                    const video = e.currentTarget.querySelector('video');
+                    if (video) {
+                      video.pause();
+                      video.currentTime = 0;
+                    }
+                  }}
+                >
                    <div className="absolute inset-0 z-10 bg-black/20 group-hover:bg-black/0 transition-colors" />
-                   <img 
-                    src={item.src}
-                    alt="Gallery item"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
-                   />
+                   {item.type === 'video' ? (
+                    <video 
+                      src={item.src}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      muted
+                      loop
+                      playsInline
+                    />
+                   ) : (
+                    <img 
+                      src={item.src}
+                      alt="Gallery item"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                   )}
                 </div>
               ))}
             </div>
@@ -421,19 +446,30 @@ export default function App() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: i * 0.05 }}
                       className="break-inside-avoid relative rounded-3xl overflow-hidden border border-neutral-800 bg-neutral-900 group"
+                      onMouseEnter={(e) => {
+                        const video = e.currentTarget.querySelector('video');
+                        if (video) video.play().catch(() => {});
+                      }}
+                      onMouseLeave={(e) => {
+                        const video = e.currentTarget.querySelector('video');
+                        if (video) {
+                          video.pause();
+                          video.currentTime = 0;
+                        }
+                      }}
                     >
                       {item.type === 'video' ? (
                         <video 
                           src={item.src} 
                           className="w-full h-auto cursor-pointer" 
-                          controls
                           muted
                           loop
+                          playsInline
                         />
                       ) : (
                         <img 
                           src={item.src} 
-                          alt={item.title} 
+                          alt="Gallery item" 
                           className="w-full h-auto group-hover:scale-105 transition-transform duration-700" 
                           referrerPolicy="no-referrer"
                         />
