@@ -67,7 +67,7 @@ export default function App() {
       <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2 group cursor-pointer">
-            <img src="/logo.png" alt="Dropouts Arena Logo" className="h-8 sm:h-10 w-auto object-contain" />
+            <img src="./images/logo.png" alt="Dropouts Arena Logo" className="h-8 sm:h-10 w-auto object-contain" />
             <span className="text-lg sm:text-xl font-bold tracking-tight hidden xs:block">DROPOUTS<span className="text-emerald-500">ARENA</span></span>
           </div>
 
@@ -145,7 +145,7 @@ export default function App() {
         <section id="turf" className="py-24 px-6 relative overflow-hidden">
           <div className="absolute inset-0 z-0">
              <img 
-                src="/images/arena.png"
+                src="./images/arena.png"
                 className="w-full h-full object-cover opacity-90 brightness-110 contrast-110"
                 alt="Real Night Turf"
              />
