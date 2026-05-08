@@ -47,35 +47,36 @@ const games = [
   { name: 'The Last of Us Part II', image: 'https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=400' },
 ];
 
-const galleryImages = [
-  'https://images.unsplash.com/photo-1544919982-b61976f0ba43?q=80&w=800',
-  'https://images.unsplash.com/photo-1622239400248-f2a8952c6034?q=80&w=800',
-  'https://images.unsplash.com/photo-1550000000001?q=80&w=800',
-  'https://images.unsplash.com/photo-1550000000002?q=80&w=800',
-  'https://images.unsplash.com/photo-1550000000003?q=80&w=800',
-  'https://images.unsplash.com/photo-1550000000004?q=80&w=800',
-  'https://images.unsplash.com/photo-1550000000005?q=80&w=800',
-  'https://images.unsplash.com/photo-1550000000006?q=80&w=800',
+const galleryItems = [
+  { type: 'video', src: '/images/gallery-1.mp4', title: 'Arena Logo Reveal' },
+  { type: 'image', src: '/images/gallery-2.png', title: 'Sunset Turf Session' },
+  { type: 'image', src: '/images/gallery-3.png', title: 'Pro Gaming Setup' },
+  { type: 'image', src: '/images/gallery-4.png', title: 'Match Results' },
+  { type: 'image', src: '/images/gallery-5.png', title: 'Corner Turf Shot' },
+  { type: 'image', src: 'https://images.unsplash.com/photo-1544919982-b61976f0ba43?q=80&w=1200', title: 'Champions Night' },
+  { type: 'image', src: 'https://images.unsplash.com/photo-1529900748604-07564a03f7a6?q=80&w=1200', title: 'Turf Action' },
+  { type: 'image', src: 'https://images.unsplash.com/photo-1540747913346-19e3adbc4ebb?q=80&w=1200', title: 'Vasai Arena' },
 ];
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showFullGallery, setShowFullGallery] = useState(false);
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-emerald-500 selection:text-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
-        <div className="max-w-7xl mx-auto px-6 h-28 flex items-center justify-between">
-          <div className="flex items-center gap-5 group cursor-pointer">
+        <div className="max-w-7xl mx-auto px-6 h-20 sm:h-32 flex items-center justify-between">
+          <div className="flex items-center gap-3 sm:gap-6 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <div className="relative">
-              <div className="absolute -inset-1 bg-emerald-500/20 rounded-full blur-xl group-hover:bg-emerald-500/40 transition-all duration-500" />
+              <div className="absolute -inset-2 bg-emerald-500/30 rounded-full blur-2xl group-hover:bg-emerald-500/50 transition-all duration-500" />
               <img 
                 src="/images/logo.png" 
                 alt="Dropouts Arena Logo" 
-                className="relative h-24 sm:h-40 w-auto object-contain transition-all duration-500 group-hover:scale-110 drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]" 
+                className="relative h-14 sm:h-40 w-auto object-contain transition-all duration-500 group-hover:scale-110 drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]" 
               />
             </div>
-            <span className="text-3xl sm:text-5xl font-black tracking-tighter hidden xs:block">
+            <span className="text-2xl sm:text-5xl font-black tracking-tighter hidden xs:block leading-none">
               DROPOUTS<span className="text-emerald-500">ARENA</span>
             </span>
           </div>
@@ -84,9 +85,9 @@ export default function App() {
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
             <a href="#turf" className="hover:text-emerald-400 transition-colors">Turf</a>
             <a href="#ps5" className="hover:text-emerald-400 transition-colors">PS5 Lounge</a>
-            <a href="#gallery" className="hover:text-emerald-400 transition-colors">Gallery</a>
+            <button onClick={() => setShowFullGallery(true)} className="hover:text-emerald-400 transition-colors">Gallery</button>
             <a href="#contact" className="hover:text-emerald-400 transition-colors">Contact</a>
-            <a href="#contact" className="bg-emerald-500 hover:bg-emerald-600 text-black px-5 py-2 rounded-full font-bold transition-all transform active:scale-95 shadow-lg shadow-emerald-500/20">
+            <a href="#contact" className="bg-emerald-500 hover:bg-emerald-600 text-black px-6 py-3 rounded-full font-bold transition-all transform active:scale-95 shadow-lg shadow-emerald-500/20">
               Book Now
             </a>
           </div>
@@ -105,7 +106,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-neutral-950 pt-36 px-6 md:hidden"
+            className="fixed inset-0 z-40 bg-neutral-950 pt-24 px-6 md:hidden"
           >
             <div className="flex flex-col gap-6 text-2xl font-bold">
               <a href="#turf" onClick={() => setIsMenuOpen(false)}>Turf</a>
@@ -357,19 +358,31 @@ export default function App() {
 
         {/* Gallery Section */}
         <section id="gallery" className="py-32 bg-neutral-900/30">
-          <div className="max-w-7xl mx-auto px-6 text-center">
-            <h2 className="text-5xl font-black mb-16 tracking-tight">Arena Gallery</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {galleryImages.map((src, i) => (
-                <div key={i} className="aspect-square bg-neutral-800 rounded-2xl overflow-hidden group relative">
-                   <div className="absolute inset-0 flex items-center justify-center text-neutral-600 bg-neutral-800">
-                      <ImageIcon size={40} />
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-6">
+              <div className="text-center md:text-left">
+                <h2 className="text-5xl font-black tracking-tight mb-2 italic">Gallery</h2>
+                <p className="text-neutral-400">Capturing the intensity of Dropouts Arena</p>
+              </div>
+              <button 
+                onClick={() => setShowFullGallery(true)}
+                className="group flex items-center gap-2 bg-neutral-800 hover:bg-emerald-500 hover:text-black px-6 py-3 rounded-full transition-all font-bold"
+              >
+                View Full Gallery
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              {galleryItems.slice(0, 4).map((item, i) => (
+                <div key={i} className="aspect-[4/5] bg-neutral-800 rounded-3xl overflow-hidden group relative cursor-pointer" onClick={() => setShowFullGallery(true)}>
+                   <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                      <p className="text-white font-bold opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 transition-transform">{item.title}</p>
                    </div>
                    <img 
-                    src={src}
-                    alt={`Gallery item ${i + 1}`}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-0 group-hover:opacity-100"
-                    onLoad={(e) => (e.currentTarget.style.opacity = '1')}
+                    src={item.src}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                    />
                 </div>
@@ -377,6 +390,70 @@ export default function App() {
             </div>
           </div>
         </section>
+
+        {/* Full Gallery Modal/Overlay */}
+        <AnimatePresence>
+          {showFullGallery && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[60] bg-neutral-950 overflow-y-auto"
+            >
+              <div className="sticky top-0 z-20 bg-neutral-950/80 backdrop-blur-md p-6 border-b border-neutral-800">
+                <div className="max-w-7xl mx-auto flex items-center justify-between">
+                  <div>
+                    <h3 className="text-3xl font-black italic">ARENA MEDIA</h3>
+                    <p className="text-emerald-500 font-bold text-sm uppercase tracking-widest">Full Collection</p>
+                  </div>
+                  <button 
+                    onClick={() => setShowFullGallery(false)}
+                    className="bg-neutral-800 hover:bg-neutral-700 p-4 rounded-full transition-colors"
+                  >
+                    <X size={24} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="max-w-7xl mx-auto px-6 py-12">
+                <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+                  {galleryItems.map((item, i) => (
+                    <motion.div 
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.05 }}
+                      className="break-inside-avoid relative rounded-3xl overflow-hidden border border-neutral-800 bg-neutral-900 group"
+                    >
+                      {item.type === 'video' ? (
+                        <video 
+                          src={item.src} 
+                          className="w-full h-auto cursor-pointer" 
+                          controls
+                          muted
+                          loop
+                        />
+                      ) : (
+                        <img 
+                          src={item.src} 
+                          alt={item.title} 
+                          className="w-full h-auto group-hover:scale-105 transition-transform duration-700" 
+                          referrerPolicy="no-referrer"
+                        />
+                      )}
+                      <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-sm font-bold bg-emerald-500 text-black px-2 py-1 rounded-md mb-2 inline-block">
+                          {item.type.toUpperCase()}
+                        </span>
+                        <h4 className="text-xl font-black italic">{item.title}</h4>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* CTA Section */}
         <section id="contact" className="py-24 px-6">
