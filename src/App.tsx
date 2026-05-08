@@ -65,10 +65,10 @@ export default function App() {
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-emerald-500 selection:text-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
           <div className="flex items-center gap-4 group cursor-pointer">
-            <img src="/images/logo.png" alt="Dropouts Arena Logo" className="h-16 sm:h-24 w-auto object-contain transition-transform group-hover:scale-105" />
-            <span className="text-2xl sm:text-3xl font-black tracking-tighter hidden xs:block">DROPOUTS<span className="text-emerald-500">ARENA</span></span>
+            <img src="/images/logo.png" alt="Dropouts Arena Logo" className="h-20 sm:h-32 w-auto object-contain transition-transform group-hover:scale-110 drop-shadow-2xl" />
+            <span className="text-2xl sm:text-4xl font-black tracking-tighter hidden xs:block">DROPOUTS<span className="text-emerald-500">ARENA</span></span>
           </div>
 
           {/* Desktop Menu */}
@@ -96,7 +96,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-neutral-950 pt-24 px-6 md:hidden"
+            className="fixed inset-0 z-40 bg-neutral-950 pt-32 px-6 md:hidden"
           >
             <div className="flex flex-col gap-6 text-2xl font-bold">
               <a href="#turf" onClick={() => setIsMenuOpen(false)}>Turf</a>
