@@ -66,9 +66,9 @@ export default function App() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2 group cursor-pointer">
-            <img src="/images/logo.png" alt="Dropouts Arena Logo" className="h-8 sm:h-10 w-auto object-contain" />
-            <span className="text-lg sm:text-xl font-bold tracking-tight hidden xs:block">DROPOUTS<span className="text-emerald-500">ARENA</span></span>
+          <div className="flex items-center gap-4 group cursor-pointer">
+            <img src="/images/logo.png" alt="Dropouts Arena Logo" className="h-16 sm:h-24 w-auto object-contain transition-transform group-hover:scale-105" />
+            <span className="text-2xl sm:text-3xl font-black tracking-tighter hidden xs:block">DROPOUTS<span className="text-emerald-500">ARENA</span></span>
           </div>
 
           {/* Desktop Menu */}
@@ -114,8 +114,8 @@ export default function App() {
       <main>
         {/* Hero Section */}
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1529900748604-07564a03f7a6?q=80&w=2000')] bg-cover bg-center opacity-40 scale-105" />
-          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/20 via-neutral-950/60 to-neutral-950" />
+          <div className="absolute inset-0 bg-[url('/images/hero.png')] bg-cover bg-center opacity-70 scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/20 via-neutral-950/40 to-neutral-950" />
           
           <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
             <motion.div
@@ -247,13 +247,18 @@ export default function App() {
         <section id="ps5" className="py-32 px-6 relative overflow-hidden">
           {/* Background Image Rotation/Enhancement Simulation */}
           <div className="absolute inset-0 z-0">
-             <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-blue-900/10 to-neutral-950" />
-             {/* Using the user's requested vibe image */}
+             <div className="absolute inset-0 bg-neutral-950/40 backdrop-blur-[2px] z-10" />
+             <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-transparent to-neutral-950 z-20" />
              <motion.img 
-                src="https://images.unsplash.com/photo-1622239400248-f2a8952c6034?q=80&w=2000"
-                className="w-full h-full object-cover opacity-20 grayscale brightness-50"
-                style={{ rotate: -5, scale: 1.1 }}
+                src="/images/ps5-bg.png"
+                className="w-full h-full object-cover opacity-40 brightness-75 contrast-125"
+                style={{ scale: 1.1 }}
                 alt="Gaming Experience"
+                onError={(e) => {
+                  // Fallback if image doesn't exist yet
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=2000";
+                  e.currentTarget.className += " grayscale opacity-20";
+                }}
              />
           </div>
 
