@@ -53,9 +53,9 @@ const galleryItems = [
   { type: 'image', src: '/images/gallery-3.png' },
   { type: 'image', src: '/images/gallery-4.png' },
   { type: 'image', src: '/images/gallery-5.png' },
-  { type: 'image', src: 'https://images.unsplash.com/photo-1544919982-b61976f0ba43?q=80&w=1200' },
-  { type: 'image', src: 'https://images.unsplash.com/photo-1529900748604-07564a03f7a6?q=80&w=1200' },
-  { type: 'image', src: 'https://images.unsplash.com/photo-1540747913346-19e3adbc4ebb?q=80&w=1200' },
+  { type: 'image', src: '/images/gallery-6.png' },
+  { type: 'image', src: '/images/gallery-7.png' },
+  { type: 'image', src: '/images/gallery-8.png' },
 ];
 
 export default function App() {
@@ -66,17 +66,16 @@ export default function App() {
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-emerald-500 selection:text-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
-        <div className="max-w-7xl mx-auto px-6 h-20 sm:h-32 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 h-16 sm:h-24 flex items-center justify-between">
           <div className="flex items-center gap-3 sm:gap-6 group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <div className="relative">
-              <div className="absolute -inset-2 bg-emerald-500/30 rounded-full blur-2xl group-hover:bg-emerald-500/50 transition-all duration-500" />
               <img 
                 src="/images/logo.png" 
                 alt="Dropouts Arena Logo" 
-                className="relative h-14 sm:h-40 w-auto object-contain transition-all duration-500 group-hover:scale-110 drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]" 
+                className="relative h-18 sm:h-32 w-auto object-contain transition-all duration-500 group-hover:scale-110" 
               />
             </div>
-            <span className="text-2xl sm:text-5xl font-black tracking-tighter hidden xs:block leading-none">
+            <span className="text-xl sm:text-4xl font-black tracking-tighter hidden xs:block leading-none">
               DROPOUTS<span className="text-emerald-500">ARENA</span>
             </span>
           </div>
@@ -106,7 +105,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 bg-neutral-950 pt-24 px-6 md:hidden"
+            className="fixed inset-0 z-40 bg-neutral-950 pt-20 px-6 md:hidden"
           >
             <div className="flex flex-col gap-6 text-2xl font-bold">
               <a href="#turf" onClick={() => setIsMenuOpen(false)}>Turf</a>
